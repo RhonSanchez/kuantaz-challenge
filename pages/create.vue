@@ -1,16 +1,14 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import { InputType } from "@/enums/inputType";
-import { Form } from "@/types/form.ts";
+import { Form } from "@/types/form";
+import { useFormDataStore } from "../store/formData";
 
+const { addForm } = useFormDataStore();
 const items = ref([
   {
-    value: InputType.Text,
+    value: InputType.Input,
     text: "Respuesta corta",
-  },
-  {
-    value: InputType.Textarea,
-    text: "Respuesta Larga",
   },
   {
     value: InputType.Select,
@@ -28,7 +26,7 @@ const items = ref([
 const formValidate = ref(null);
 const NEW_QUESTION = {
   question: "",
-  type: InputType.Text,
+  type: InputType.Input,
   response: "",
 };
 const form = reactive({
@@ -38,7 +36,7 @@ const form = reactive({
     form: [
       {
         question: "",
-        type: InputType.Text,
+        type: InputType.Input,
         response: "",
       },
     ],
@@ -60,8 +58,14 @@ const resetValidation = () => {
   formValidate?.value.resetValidation();
 };
 
-const validate = () => {
-  formValidate?.value.validate();
+const validate = async () => {
+  const resp = await formValidate?.value.validate();
+  // console.log(resp.valid);
+  if (resp.valid) {
+    console.log("validado", form);
+    addForm(form);
+    navigateTo("/");
+  }
 };
 </script>
 
@@ -134,12 +138,7 @@ const validate = () => {
             "
           ></v-select>
 
-          <div
-            v-if="
-              question.type === InputType.Text ||
-              question.type === InputType.Textarea
-            "
-          >
+          <div v-if="question.type === InputType.Input">
             <v-text-field
               :label="items.find((i) => i.value === question.type)?.text"
               hide-details="auto"

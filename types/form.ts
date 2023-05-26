@@ -14,7 +14,7 @@ export interface Form {
   question: string;
   type: InputType;
   items?: Array<ItemClass | string>;
-  response: string;
+  response: ItemClass | string | Array<ItemClass | string>;
 }
 
 export interface ItemClass {

@@ -1,6 +1,5 @@
 export enum InputType {
-  Text = "TEXT",
-  Textarea = "TEXTAREA",
+  Input = "INPUT",
   Select = "SELECT",
   Radio = "RADIO",
   Checkbox = "CHECKBOX",

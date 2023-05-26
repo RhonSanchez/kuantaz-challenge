@@ -3,7 +3,12 @@ import { Form } from "../types/form";
 defineProps({
   form: {} as Form,
 });
+const emit = defineEmits(["click"]);
 const show = ref(false);
+
+function handleClick(data: Form) {
+  emit("click", data);
+}
 </script>
 
 <template>
@@ -14,24 +19,16 @@ const show = ref(false);
     ></v-img>
 
     <v-card-title> {{ form.formulario.name }} </v-card-title>
+    <v-card-subtitle> {{ form.formulario.description }} </v-card-subtitle>
 
     <v-card-actions>
-      <v-btn color="orange-lighten-2" variant="text"> Explore </v-btn>
-
-      <v-spacer></v-spacer>
-
       <v-btn
-        :icon="show ? 'mdi-chevron-up' : 'mdi-chevron-down'"
-        @click="show = !show"
-      ></v-btn>
+        color="orange-lighten-2"
+        variant="text"
+        @click="() => handleClick(form)"
+      >
+        Explore
+      </v-btn>
     </v-card-actions>
-
-    <v-expand-transition>
-      <div v-show="show">
-        <v-divider></v-divider>
-
-        <v-card-text> {{ form.formulario.descripcion }} </v-card-text>
-      </div>
-    </v-expand-transition>
   </v-card>
 </template>
