@@ -84,7 +84,7 @@ const updateRadioOrCheckboxButton = (
 };
 </script>
 <template>
-  <v-card class="mx-auto mb-8" width="400">
+  <v-card class="mx-auto mb-8" width="100%">
     <template v-slot:title>
       <v-text-field
         v-model="question.question"

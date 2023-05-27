@@ -12,7 +12,7 @@ const description = (data: Form) => {
 };
 </script>
 <template>
-  <v-card class="mx-auto my-8" width="400" prepend-icon="mdi-home">
+  <v-card class="mx-auto my-8" width="100%" prepend-icon="mdi-home">
     <template v-slot:title>
       {{ name(form) }}
     </template>

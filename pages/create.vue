@@ -52,12 +52,13 @@ const validate = async () => {
   <v-form ref="formValidate">
     <v-container>
       <v-row class="justify-center">
-        <v-col cols="12" sm="8" md="6">
-          <FormTitle :form="form" />
+        <v-col cols="12" sm="8" md="6" class="d-flex flex-column align-center">
+          <FormTitle :form="form" class="pa-2" />
 
-          <div
+          <v-card
             v-for="(question, indexQuestion) in form.formulario.form"
-            class="d-flex"
+            class="d-flex elevation-0 rounded-0 pa-2"
+            width="100%"
           >
             <FormQuestion :question="question" />
             <div class="d-flex flex-column">
@@ -79,9 +80,9 @@ const validate = async () => {
                 @click="AddQuestion"
               ></v-btn>
             </div>
-          </div>
+          </v-card>
           <Btn
-            class="ma-2"
+            class="ma-auto"
             color="primary"
             size="small"
             title="Guardar"

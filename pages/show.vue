@@ -24,7 +24,18 @@ const updateTab = () => {
 
     <v-window v-model="tab">
       <v-window-item value="form">
-        <FormGenerator :form="formSelected" @confirm="updateTab" />
+        <v-container>
+          <v-row class="justify-center">
+            <v-col
+              cols="12"
+              sm="8"
+              md="6"
+              class="d-flex flex-column align-center"
+            >
+              <FormGenerator :form="formSelected" @confirm="updateTab" />
+            </v-col>
+          </v-row>
+        </v-container>
       </v-window-item>
       <v-window-item value="answers"
         ><FormAswers :form="formSelected"
