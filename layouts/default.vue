@@ -1,24 +1,3 @@
-<!-- <template>
-  <v-card class="elevation-0 rounded-0" width="100%" height="100%">
-    <v-toolbar color="primary">
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
-
-      <v-toolbar-title>Your Dashboard</v-toolbar-title>
-
-      <v-spacer></v-spacer>
-
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-dots-vertical</v-icon>
-      </v-btn>
-    </v-toolbar>
-    <slot />
-  </v-card>
-</template> -->
-
 <script lang="ts" setup>
 const drawer = ref(false);
 
@@ -28,7 +7,7 @@ const updateDrawer = () => {
 </script>
 
 <template>
-  <v-card class="elevation-0 rounded-0" width="100%" height="100vh">
+  <v-card class="elevation-0 rounded-0" width="100%" height="">
     <v-layout full-height>
       <v-navigation-drawer v-model="drawer" temporary>
         <v-list density="compact" nav>
@@ -48,11 +27,6 @@ const updateDrawer = () => {
           ></v-list-item>
         </v-list>
       </v-navigation-drawer>
-      <!-- <v-main style="height: 250px">
-        <div class="d-flex justify-center align-center h-100">
-          <v-btn color="primary" @click.stop="updateDrawer"> Toggle </v-btn>
-        </div>
-      </v-main> -->
       <v-card class="elevation-0 rounded-0" width="100%" height="100%">
         <v-toolbar color="primary">
           <div @click="updateDrawer">
@@ -65,6 +39,12 @@ const updateDrawer = () => {
 
           <v-btn icon>
             <v-icon>mdi-magnify</v-icon>
+          </v-btn>
+          <v-btn icon to="/create">
+            <v-icon>mdi-plus</v-icon>
+            <v-tooltip activator="parent" location="bottom"
+              >Crear formulario</v-tooltip
+            >
           </v-btn>
         </v-toolbar>
         <slot />

@@ -1,36 +1,27 @@
 <script lang="ts" setup>
-import FormGenerator from "@/components/FormGenerator.vue";
-import { useFormDataStore } from "../store/formData";
-import { getValidationForms } from "~/services/forms";
-import { Form } from "~/types/form";
-const show = ref(false);
+import { useFormDataStore } from "@/store/formData";
+import { Form } from "@/types/form";
 
 const { forms, getForms, addSelectedForm } = useFormDataStore();
-const route = useRoute();
-
-console.log(forms);
-const handleCreatePage = () => {
-  navigateTo("/create");
-};
-const handleShow = (data: Form) => {
-  console.log("click");
-  addSelectedForm(data);
-  navigateTo("/show");
-};
 
 onMounted(async () => {
   await getForms();
 });
+
+const handleShow = (data: Form) => {
+  addSelectedForm(data);
+  navigateTo("/show");
+};
 </script>
 
 <template>
-  <main class="d-flex flex-wrap">
-    <CardNewForm @click="handleCreatePage" />
-    <CardForm
-      v-for="form in forms"
-      :key="form.formulario.name"
-      :form="form"
-      @click="handleShow"
-    />
+  <main>
+    <v-container>
+      <v-row>
+        <v-col cols="4" v-for="form in forms" :key="form.formulario.name">
+          <CardForm :form="form" @click="handleShow" />
+        </v-col>
+      </v-row>
+    </v-container>
   </main>
 </template>

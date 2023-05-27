@@ -7,10 +7,10 @@ export interface Form {
 export interface Formulario {
   name: string;
   descripcion: string;
-  form: Form[];
+  form: Question[];
 }
 
-export interface Form {
+export interface Question {
   question: string;
   type: InputType;
   items?: Array<ItemClass | string>;
