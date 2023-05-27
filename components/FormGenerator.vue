@@ -19,9 +19,16 @@ const submitForm = async (data: Form) => {
 };
 </script>
 <template>
-  <v-form ref="formValidate" class="d-flex flex-column align-center">
+  <v-form
+    ref="formValidate"
+    class="d-flex flex-column align-center form-validate"
+  >
     <FormTitleShow :form="form" />
-    <div v-for="(question, index) in form?.formulario?.form" :key="index">
+    <div
+      v-for="(question, index) in form?.formulario?.form"
+      :key="index"
+      class="form-validate"
+    >
       <FormQuestionShow :question="question" />
     </div>
     <Btn
@@ -33,3 +40,8 @@ const submitForm = async (data: Form) => {
     />
   </v-form>
 </template>
+<style scoped>
+.form-validate {
+  width: 100%;
+}
+</style>
