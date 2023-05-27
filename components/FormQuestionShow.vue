@@ -27,6 +27,7 @@ defineProps({
           :items="question.items"
           item-title="value"
           item-value="id"
+          density="compact"
           return-object
           :rules="[isRequired]"
         ></v-select>
