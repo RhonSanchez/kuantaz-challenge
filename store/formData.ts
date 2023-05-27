@@ -1,6 +1,9 @@
 import { defineStore } from "pinia";
 import { Form } from "@/types/form";
-import { getValidationForms } from "~/services/forms";
+import {
+  getValidationForms,
+  getValidationSelectedForms,
+} from "@/services/forms";
 
 export const useFormDataStore = defineStore("formData", () => {
   const forms = reactive([] as Form[]);
@@ -13,13 +16,18 @@ export const useFormDataStore = defineStore("formData", () => {
     localStorage.setItem("forms", JSON.stringify(forms));
   }
 
+  async function getSelectedForms() {
+    const resp = await getValidationSelectedForms();
+    formSelected.formulario = resp.formulario;
+    localStorage.setItem("formSelected", JSON.stringify(formSelected));
+  }
+
   function addForm(data: Form) {
     forms.push(data);
     localStorage.setItem("forms", JSON.stringify(forms));
   }
 
   function updateForm(data: Form) {
-    console.log(data);
     const indexElement = forms.findIndex(
       (f) => f.formulario.name === data.formulario.name
     );
@@ -29,7 +37,7 @@ export const useFormDataStore = defineStore("formData", () => {
 
   function addSelectedForm(data: Form) {
     formSelected.formulario = data.formulario;
-    console.log(formSelected);
+    localStorage.setItem("formSelected", JSON.stringify(formSelected));
   }
 
   return {
@@ -38,6 +46,7 @@ export const useFormDataStore = defineStore("formData", () => {
     getForms,
     addForm,
     updateForm,
+    getSelectedForms,
     addSelectedForm,
   };
 });

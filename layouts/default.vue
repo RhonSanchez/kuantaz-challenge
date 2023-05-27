@@ -1,5 +1,13 @@
 <script lang="ts" setup>
+import { useFormDataStore } from "@/store/formData";
+
+const { getForms, getSelectedForms } = useFormDataStore();
 const drawer = ref(false);
+
+onMounted(async () => {
+  await getForms();
+  await getSelectedForms();
+});
 
 const updateDrawer = () => {
   drawer.value = !drawer.value;
@@ -7,7 +15,7 @@ const updateDrawer = () => {
 </script>
 
 <template>
-  <v-card class="elevation-0 rounded-0" width="100%" height="">
+  <v-card class="elevation-0 rounded-0 card-main-layout" width="100%">
     <v-layout full-height>
       <v-navigation-drawer v-model="drawer" temporary>
         <v-list density="compact" nav>
@@ -37,9 +45,6 @@ const updateDrawer = () => {
 
           <v-spacer></v-spacer>
 
-          <v-btn icon>
-            <v-icon>mdi-magnify</v-icon>
-          </v-btn>
           <v-btn icon to="/create">
             <v-icon>mdi-plus</v-icon>
             <v-tooltip activator="parent" location="bottom"
@@ -52,3 +57,8 @@ const updateDrawer = () => {
     </v-layout>
   </v-card>
 </template>
+<style scoped>
+.card-main-layout {
+  display: contents;
+}
+</style>

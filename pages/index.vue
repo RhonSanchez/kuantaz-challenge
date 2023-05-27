@@ -2,11 +2,7 @@
 import { useFormDataStore } from "@/store/formData";
 import { Form } from "@/types/form";
 
-const { forms, getForms, addSelectedForm } = useFormDataStore();
-
-onMounted(async () => {
-  await getForms();
-});
+const { forms, addSelectedForm } = useFormDataStore();
 
 const handleShow = (data: Form) => {
   addSelectedForm(data);

@@ -13,9 +13,9 @@ const updateTab = () => {
 
 <template>
   <v-card class="elevation-0 rounded-0">
-    <v-toolbar height="20px" color="primary">
+    <v-toolbar height="20px" color="primary" class="justify-center">
       <template v-slot:extension>
-        <v-tabs v-model="tab" align-tabs="center">
+        <v-tabs v-model="tab" align-tabs="end" class="mx-auto">
           <v-tab value="form">Formulario</v-tab>
           <v-tab value="answers">Respuestas</v-tab>
         </v-tabs>

@@ -77,9 +77,13 @@ const validate = async () => {
           ></v-btn>
         </div>
       </div>
-      <v-btn class="ma-2" color="primary" size="small" @click="validate"
-        >Guardar</v-btn
-      >
+      <Btn
+        class="ma-2"
+        color="primary"
+        size="small"
+        title="Guardar"
+        @click="validate"
+      />
     </div>
   </v-form>
 </template>

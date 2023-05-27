@@ -25,7 +25,7 @@ function handleClick(data: Form) {
     <v-card-subtitle> {{ form.formulario.descripcion }} </v-card-subtitle>
 
     <v-card-actions>
-      <v-btn color="primary" @click="() => handleClick(form)"> Ver </v-btn>
+      <Btn color="primary" title="Ver" @click="() => handleClick(form)" />
     </v-card-actions>
   </v-card>
 </template>

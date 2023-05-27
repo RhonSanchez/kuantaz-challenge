@@ -3,15 +3,22 @@ import { Form } from "@/types/form";
 defineProps({
   form: {} as Form,
 });
+
+const name = (data: Form) => {
+  return data?.formulario?.name ?? "";
+};
+const description = (data: Form) => {
+  return data?.formulario?.descripcion ?? "";
+};
 </script>
 <template>
   <v-card class="mx-auto my-8" width="400" prepend-icon="mdi-home">
     <template v-slot:title>
-      {{ form.formulario.name }}
+      {{ name(form) }}
     </template>
 
     <v-card-text>
-      {{ form.formulario.descripcion }}
+      {{ description(form) }}
     </v-card-text>
   </v-card>
 </template>
