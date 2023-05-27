@@ -22,7 +22,7 @@ function handleClick(data: Form) {
     </v-sheet>
 
     <v-card-title> {{ form.formulario.name }} </v-card-title>
-    <v-card-subtitle> {{ form.formulario.description }} </v-card-subtitle>
+    <v-card-subtitle> {{ form.formulario.descripcion }} </v-card-subtitle>
 
     <v-card-actions>
       <v-btn color="primary" @click="() => handleClick(form)"> Ver </v-btn>
