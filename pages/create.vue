@@ -57,7 +57,7 @@ const validate = async () => {
 
           <div
             v-for="(question, indexQuestion) in form.formulario.form"
-            :class="`d-flex ${isLastElement(indexQuestion) ? '' : ''}`"
+            class="d-flex"
           >
             <FormQuestion :question="question" />
             <div class="d-flex flex-column">

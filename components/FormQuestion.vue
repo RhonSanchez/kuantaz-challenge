@@ -167,7 +167,7 @@ const updateRadioOrCheckboxButton = (
             ></v-btn>
           </div>
           <v-text-field
-            label="Añadir otra opcioón"
+            label="Añadir otra opción"
             density="compact"
             readonly
             @mousedown:control="
