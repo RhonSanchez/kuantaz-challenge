@@ -14,7 +14,14 @@ const handleShow = (data: Form) => {
   <main>
     <v-container>
       <v-row>
-        <v-col cols="4" v-for="form in forms" :key="form.formulario.name">
+        <v-col
+          cols="12"
+          sm="6"
+          md="4"
+          lg="3"
+          v-for="form in forms"
+          :key="form.formulario.name"
+        >
           <CardForm :form="form" @click="handleShow" />
         </v-col>
       </v-row>

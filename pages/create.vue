@@ -50,40 +50,45 @@ const validate = async () => {
 
 <template>
   <v-form ref="formValidate">
-    <div class="d-flex flex-column align-center">
-      <FormTitle :form="form" />
+    <v-container>
+      <v-row class="justify-center">
+        <v-col cols="12" sm="8" md="6">
+          <FormTitle :form="form" />
 
-      <div
-        v-for="(question, indexQuestion) in form.formulario.form"
-        :class="`d-flex ${isLastElement(indexQuestion) ? 'ml-13' : ''}`"
-      >
-        <FormQuestion :question="question" />
-        <div class="d-flex flex-column">
-          <v-btn
-            v-if="
-              isLastElement(indexQuestion) && isNotFirstElement(indexQuestion)
-            "
+          <div
+            v-for="(question, indexQuestion) in form.formulario.form"
+            :class="`d-flex ${isLastElement(indexQuestion) ? '' : ''}`"
+          >
+            <FormQuestion :question="question" />
+            <div class="d-flex flex-column">
+              <v-btn
+                v-if="
+                  isLastElement(indexQuestion) &&
+                  isNotFirstElement(indexQuestion)
+                "
+                class="ma-2"
+                icon="mdi-close"
+                size="small"
+                @click="deleteQuestion"
+              ></v-btn>
+              <v-btn
+                v-if="isLastElement(indexQuestion)"
+                class="ma-2"
+                icon="mdi-plus"
+                size="small"
+                @click="AddQuestion"
+              ></v-btn>
+            </div>
+          </div>
+          <Btn
             class="ma-2"
-            icon="mdi-close"
+            color="primary"
             size="small"
-            @click="deleteQuestion"
-          ></v-btn>
-          <v-btn
-            v-if="isLastElement(indexQuestion)"
-            class="ma-2"
-            icon="mdi-plus"
-            size="small"
-            @click="AddQuestion"
-          ></v-btn>
-        </div>
-      </div>
-      <Btn
-        class="ma-2"
-        color="primary"
-        size="small"
-        title="Guardar"
-        @click="validate"
-      />
-    </div>
+            title="Guardar"
+            @click="validate"
+          />
+        </v-col>
+      </v-row>
+    </v-container>
   </v-form>
 </template>
